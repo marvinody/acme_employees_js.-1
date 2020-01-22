@@ -17,7 +17,10 @@ const spacer = (text) => {
   console.log(`${stars} ${text} ${stars}`)
 }
 
-
+// perfect use of a for loop
+// I would ask if you can try rewriting using an array method
+// just want to make sure you're comfortable using them since they'll be more
+// used going forward
 const findEmployeeByName = (name, array) => {
 
   for (let i = 0; i < array.length; i++) {
@@ -36,6 +39,9 @@ console.log(findEmployeeByName('moe', employees))//{ id: 1, name: 'moe' }
 spacer('')
 
 
+// my guy, you gotta have better variable names
+// what is func? is func a function?
+// what is a? some letter?
 const findManagerFor = (func, array) => {
 
   const a = func.managerId
@@ -53,6 +59,9 @@ console.log(findManagerFor(findEmployeeByName('shep Jr.', employees), employees)
 spacer('')
 
 
+// good use of for loop and variable names!
+// this is what I would like to see throughout
+// what other array methods might you use here?
 const findCoworkersFor = (empl, array) => {
   let arrayEmpl = []
   const emplManID = empl.managerId
@@ -71,8 +80,12 @@ console.log(findCoworkersFor(findEmployeeByName('larry', employees), employees))
     { id: 99, name: 'lucy', managerId: 1 } ]
   */
 
-
+// I'm not sure this will work if the chain is structued a certain way
+// what if a later employee is a manager to an earlier employee
+// there's a more robust approach using recursion
+// robust, meaning more resistant to bugs
 const findManagementChainForEmployee = (empl, array) => {
+  // emplChain is not used
   const emplChain = empl.managerId
   let listArray = []
   if (!empl.managerId) {
@@ -104,6 +117,9 @@ console.log(findManagementChainForEmployee(findEmployeeByName('shep Jr.', employ
     { id: 4, name: 'shep', managerId: 2 }]
   */
 spacer('')
+// uh oh, I see vars and I freak out
+// having variables outside of the function here makes them global
+// and is something that should try to be avoided!
 var employees2 = employees
 var arr = []
 function generateManagementTree(array) {
